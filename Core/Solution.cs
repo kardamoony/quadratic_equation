@@ -14,12 +14,12 @@ namespace QuadraticEquation.Core
             
             var d = b * b - 4 * a * c;
 
-            if (d < 0)
+            if (Math.Abs(d) < double.Epsilon)
             {
-                return Array.Empty<double>();
+                return new []{ -b / (2 * a) };
             }
 
-            if (d > 0)
+            if (d > double.Epsilon)
             {
                 var sqrtD = Math.Sqrt(d);
 
@@ -30,7 +30,7 @@ namespace QuadraticEquation.Core
                 };
             }
 
-            return new []{ -b / (2 * a) };
+            return Array.Empty<double>();
         }
         
         private static bool ValidateArguments(double a, double b, double c, out string msg)
